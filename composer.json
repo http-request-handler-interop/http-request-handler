@@ -1,0 +1,80 @@
+{
+    "name": "http-request-handler-interop/http-request-handler",
+    "description": "Common interfaces for HTTP Request Handler",
+    "keywords": [
+        "psr",
+        "psr-7",
+        "http",
+        "http-message",
+        "request",
+        "response",
+        "handler"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Michael Mayer",
+            "email": "michael@schnittstabil.de"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Interop\\Http\\RequestHandler\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Interop\\Http\\RequestHandler\\": "tests"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    },
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "php-fig/fig-standards",
+                "version": "0.1.0",
+                "source": {
+                    "url": "git@github.com:http-request-handler-interop/fig-standards.git",
+                    "type": "git",
+                    "reference": "http-request-handler-0.1.0"
+                }
+            }
+        }
+    ],
+    "require": {
+        "php": ">=5.6.0",
+        "psr/http-message": "^1.0"
+    },
+    "require-dev": {
+        "league/commonmark": "^0.15.3",
+        "php-fig/fig-standards": "*"
+    },
+    "scripts": {
+        "bump": [
+            "php ./bin/bump.php latest"
+        ],
+        "build": [
+            "@clean",
+            "php ./bin/build.php"
+        ],
+        "clean": "rm -rf build/ src/* .php_cs.cache",
+        "lint": [
+            "sugared-rim-cs"
+        ],
+        "test": [
+            "@travis",
+            "@lint"
+        ],
+        "travis": [
+            "tests/smoke.php"
+        ]
+    }
+}
